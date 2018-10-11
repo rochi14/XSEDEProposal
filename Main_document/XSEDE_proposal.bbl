@@ -1,0 +1,146 @@
+\begin{thebibliography}{10}
+
+\bibitem{alsinan2016}
+A.~Alsinan, E.~Meiburg, and P.~Garaud.
+\newblock Fingering convection in double-diffusive, sediment-laden flows:
+  linear stability analysis.
+\newblock {\em J. Fluid Mech.}, in preparation, 2016.
+
+\bibitem{ardekani2018heat}
+M.~N. Ardekani, O.~Abouali, F.~Picano, and L.~Brandt.
+\newblock Heat transfer in laminar couette flow laden with rigid spherical
+  particles.
+\newblock {\em Journal of Fluid Mechanics}, 834:308--334, 2018.
+
+\bibitem{biegert2016}
+E.~Biegert, B.~Vowinckel, and E.~Meiburg.
+\newblock Grain-resolving simulations of flows over dense, mobile,
+  multidisperse granular sediment beds: An immersed boundary approach.
+\newblock {\em {\em J. Comp. Phys.}}, submitted:DOI: arXiv:1608.03566, 2016.
+
+\bibitem{blake1971}
+J.~R. Blake.
+\newblock A spherical envelope approach to ciliary propulsion.
+\newblock {\em Journal of Fluid Mechanics}, 46(1):199--208, 03 1971.
+
+\bibitem{chisholm2016}
+N.~G. Chisholm, D.~Legendre, E.~Lauga, and A.~S. Khair.
+\newblock A squirmer across reynolds numbers.
+\newblock {\em Journal of Fluid Mechanics}, 796:233–256, 2016.
+
+\bibitem{ferziger2012computational}
+J.~H. Ferziger and M.~Peric.
+\newblock {\em Computational methods for fluid dynamics}.
+\newblock Springer Science \& Business Media, 2012.
+
+\bibitem{ishikawa2006}
+T.~Ishikawa, M.~P. Simmonds, and T.~J. Pedley.
+\newblock Hydrodynamic interaction of two swimming model micro-organisms.
+\newblock {\em Journal of Fluid Mechanics}, 568:119–160, 2006.
+
+\bibitem{julien2010erosion}
+P.~Y. Julien.
+\newblock {\em Erosion and sedimentation}.
+\newblock Cambridge University Press, 2010.
+
+\bibitem{kempe2012}
+T.~Kempe and J.~Fr{\"o}hlich.
+\newblock An improved immersed boundary method with direct forcing for the
+  simulation of particle laden flows.
+\newblock {\em J. Comput. Phys.}, 231(9):3663--3684, 2012.
+
+\bibitem{kidanemariam2017formation}
+A.~G. Kidanemariam and M.~Uhlmann.
+\newblock Formation of sediment patterns in channel flow: minimal unstable
+  systems and their temporal evolution.
+\newblock {\em Journal of Fluid Mechanics}, 818:716--743, 2017.
+
+\bibitem{kneller2016long}
+B.~Kneller, M.~M. Nasr-Azadani, S.~Radhakrishnan, and E.~Meiburg.
+\newblock Long-range sediment transport in the world's oceans by stably
+  stratified turbidity currents.
+\newblock {\em Journal of Geophysical Research: Oceans}, 2016.
+
+\bibitem{konopliv2016}
+N.~Konopliv and E.~Meiburg.
+\newblock Double-diffusive lock-exchange gravity currents.
+\newblock {\em J. Fluid Mech.}, 797:729--764, 2016.
+
+\bibitem{konopliv2016modelling}
+N.~Konopliv, S.~G.~L. Smith, J.~McElwaine, and E.~Meiburg.
+\newblock Modelling gravity currents without an energy closure.
+\newblock {\em Journal of Fluid Mechanics}, 789:806--829, 2016.
+
+\bibitem{kyrousi2018}
+F.~Kyrousi, A.~Leonardi, F.~Roman, V.~Armenio, F.~Zanello, J.~Zordan, C.~Juez,
+  and L.~Falcomer.
+\newblock Large eddy simulations of sediment entrainment induced by a
+  lock-exchange gravity current.
+\newblock {\em Advances in Water Resources}, 114:102 -- 118, 2018.
+
+\bibitem{Lampitt2008}
+R.~S. Lampitt, E.~P. Achterberg, T.~R. Anderson, J.~A. Hughes, M.~D.
+  Iglesias-Rodriguez, B.~A. Kelly-Gerreyn, M.~Lucas, E.~E. Popova, R.~Sanders,
+  J.~G. Shepherd, D.~Smythe-Wright, and A.~Yool.
+\newblock {Ocean fertilization: a potential means of geoengineering?}
+\newblock {\em Philosophical transactions. Series A, Mathematical, physical,
+  and engineering sciences}, 366(August):3919--3945, 2008.
+
+\bibitem{Aderkani2016}
+G.~Li, A.~Ostace, and A.~M. Ardekani.
+\newblock Hydrodynamic interaction of swimming organisms in an inertial regime.
+\newblock {\em Phys. Rev. E}, 94:053104, Nov 2016.
+
+\bibitem{Lighthill1952}
+M.~J. Lighthill.
+\newblock On the squirming motion of nearly spherical deformable bodies through
+  liquids at very small reynolds numbers.
+\newblock {\em Communications on Pure and Applied Mathematics}, 5(2):109--118,
+  1952.
+
+\bibitem{meiburg2010}
+E.~Meiburg and B.~Kneller.
+\newblock Turbidity currents and their deposits.
+\newblock {\em Annu. Rev. Fluid Mech.}, 42:135--156, 2010.
+
+\bibitem{necker2002}
+F.~Necker, C.~H{\"a}rtel, L.~Kleiser, and E.~Meiburg.
+\newblock High-resolution simulations of particle-driven gravity currents.
+\newblock {\em Int. J. Multiphase Flow}, 28(2):279--300, 2002.
+
+\bibitem{nokes2016front}
+R.~Nokes, C.~Cenedese, M.~Ball, and T.~Williams.
+\newblock The front condition for gravity currents propagating over rough
+  boundaries.
+\newblock In {\em VIIIth International Symposium on Stratified Flows},
+  volume~1, 2016.
+
+\bibitem{simpson1997gravity}
+J.~E. Simpson.
+\newblock {\em Gravity currents: In the environment and the laboratory}.
+\newblock Cambridge university press, 1997.
+
+\bibitem{uhlmann2005}
+M.~Uhlmann.
+\newblock An immersed boundary method with direct forcing for the simulation of
+  particulate flows.
+\newblock {\em J. Comput. Phys.}, 209(2):448--476, 2005.
+
+\bibitem{vowinckel2016b}
+B.~Vowinckel, R.~Jain, T.~Kempe, and J.~Fr{\"o}hlich.
+\newblock Erosion of single particles in a turbulent open-channel flow: a
+  numerical study.
+\newblock {\em J. Hydraul. Res.}, submitted, 2016.
+
+\bibitem{yalin1979inception}
+M.~S. Yalin and E.~Karahan.
+\newblock Inception of sediment transport.
+\newblock {\em Journal of the hydraulics division}, 105(11):1433--1443, 1979.
+
+\bibitem{zordan2018}
+J.~Zordan, C.~Juez, A.~J. Schleiss, and M.~J. Franca.
+\newblock Entrainment, transport and deposition of sediment by saline gravity
+  currents.
+\newblock {\em Advances in Water Resources}, 115:17--32, 2018.
+
+\end{thebibliography}

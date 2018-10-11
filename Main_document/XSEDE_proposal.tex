@@ -1,0 +1,512 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% University/School Laboratory Report
+% LaTeX Template
+% Version 3.1 (25/3/14)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Linux and Unix Users Group at Virginia Tech Wiki 
+% (https://vtluug.org/wiki/Example_LaTeX_chem_lab_report)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt]{article}
+
+% \usepackage[version=3]{mhchem} % Package for chemical equation typesetting
+\usepackage{siunitx} % Provides the \SI{}{} and \si{} command for typesetting SI units
+\usepackage{graphicx} % Required for the inclusion of images
+\usepackage[super,sort&compress]{natbib}
+ % Required to change bibliography style to APA
+\usepackage{amsmath} % Required for some math elements 
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{float}
+\usepackage{comment}
+\usepackage{atbegshi}
+\usepackage{amsfonts}
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+\renewcommand{\labelenumi}{\alph{enumi}.} % Make numbering in the enumerate environment by letter rather than number (e.g. section 6)
+
+
+\newcommand{\tk}{\textcolor{red}}
+\newcommand{\ro}{\textcolor{blue}}
+
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{ \end{equation} }
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\mbf}{\mathbf}
+\newcommand{\bs}{\boldsymbol}
+
+%\usepackage{times} % Uncomment to use the Times New Roman font
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\title{Renewal Proposal for a XSEDE Allocation on the Supercomputer {\em Stampede2} at TACC\\
+       \normalsize{\textbf{Fully resolved simulations of passive and active particles in fluid flows}}} % Title
+
+\author{Eckart Meiburg} % Author name
+
+\date{\today} % Date for the report
+
+\begin{document}
+
+\maketitle % Insert the title, author and date
+
+\begin{center}
+\begin{tabular}{l l}
+\multicolumn{2}{l}{UC Santa Barbara, Department of Mechanical Engineering} \\ % 
+Office:          & 2351 Engineering II Building \\
+Phone:           & (805) 893-5278\\
+Email:           & meiburg@engineering.ucsb.edu\\
+\\
+\multicolumn{2}{l}{Project contributors:} \\ % 
+Rochishnu Chowdhury & rochishnu00@ucsb.edu \\
+Thomas K\"{o}llner    & tk.koellner@mailbox.org\\
+Rapha\"{e}l Ouillon    & ouillon@engineering.ucsb.edu\\
+\end{tabular}
+\end{center}
+
+% If you wish to include an abstract, uncomment the lines below
+ \begin{abstract}
+This is a renewal proposal for an XSEDE research allocation. The renewal proposal amounts to \textbf{xx SUs in node hours} to be used on \emph{Stampede2}, and to \textbf{xx[TB]}] of storage on \emph{Ranch}. The allocation will support the group of principal investigator (PI) Prof. Eckart Meiburg, to investigate transport processes involving strongly coupled fluid and particle phases. The interactions between the two phases play a crucial role in a number of research areas, several among them at the center of petroleum science. In order to advance our fundamental understanding of the grain-scale processes underlying the large-scale dynamics of such particulate flows, the PI has established a research direction in recent years aimed at performing three-dimensional, high-resolution and massively parallel grain-resolving simulations of concentrated particulate suspensions. The availability of such a simulation tool will allow the PI's group to initiate a multitude of new research avenues such as the optimization of oil/sand separation processes, the dynamics of “marine snow,” which forms the basis of several geo-engineering concepts proposed for deep-ocean $\text{CO}_2$-sequestration \cite{Lampitt2008}, or the collective motion of swarms of self-propelled organisms and their impact on large-scale oceanic mixing.
+ \end{abstract}
+
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+
+\section{Research objectives}
+
+Using XSEDE resources, the team aims at numerically exploring the interaction of passive and active particle-laden flows and sediment beds at the microscopic scale of individual grains via grain-resolving simulations. One goal is the development of accurate models for their erosional and depositional behavior, which can then be incorporated into existing macroscopic simulation codes. Another objective of the present project is the investigation of collective motion of large groups of self-propelled organisms in order to help quantifying their impact on global oceanic mixing in conjuncture with field observations and laboratory experiments. XSEDE resources enable the PI's group to analyze multiscale, realistic systems involving large numbers of individual, active or passive, interacting particles. These research directions are currently supported by the following grants to the PI: Army Research Office W911NF-18-1-0379, NSF CBET-1803380, Naval Surface Warfare Center N00174-16-C-0013, NSF CASIS Grant 1638156, and a grant for a research fellowship
+by the Deutsche Forschungsgemeinschaft (Germany) KO5515/1-1.
+
+\subsection*{Previous work}
+The present project started three years ago with our first XSEDE proposal. Using XSEDE resources, we have been able to successfully address interesting fundamental questions regarding double-diffusive turbidity currents \cite{konopliv2016}, as well as the impact of particle-laden flows on the mechanism of double-diffusion \cite{alsinan2016,Reali2017}. In addition, we have been able to establish new numerical techniques that allow us to study multiphase flows on the grain scale. For the purpose of carrying out phase-resolved direct numerical simulations of particle-laden flows, the in-house code PARTIES (PARTicle-laden flows via immersed boundarIES) was developed by the PI's group for the challenging situation of horizontal flows over heavy and densely packed sediment beds.  This was achieved by using the phase-resolving Immersed Boundary Method (IBM) \cite{uhlmann2005} together with a sophisticated approach to model particle collisions \cite{biegert2016}. In the latter reference, we have successfully reproduced experimental results from various experimental benchmark data with high accuracy. The study also contains first results of flows over dense sediment beds.  The code has been successfully established and employed on {\em Stampede2}. In this three-year frame, important efforts have been put into making PARTIES a robust, fast and massively parallel code that follows the new paradigms of supercomputer programming. The code is now shared, improved and maintained by the entire team in the PI's lab and collaborators around the world. It  uses a version control system, and is now being developed specifically for modern supercomputing heterogeneous architectures. Efforts have been made, established with a 5-day Hackathon at the ORNL, to support GPU acceleration in PARTIES in order to take advantage of XSEDE's GPU resources on the \emph{Comet} cluster in the future. In the meantime, continuous efforts will be put into improving performance and extending PARTIES  by tackling new physical phenomenon. For the upcoming allocation period we kindly request your support for the following three distinct projects:       %% \\
+
+\subsection*{Project 1: Cohesive Sediment Dynamics in Turbulent Flow}
+Cohesive sediment is ubiquitous in ecologically sensitive environments such as rivers,
+lakes, estuaries, fisheries and benthic habitats. Reliable predictions of contaminant and nutrient
+transport in such settings require accurate models of cohesive sediment dynamics, which we currently lack. For cohesive sediment, which commonly refers to particles below approximately 63 micron in size, interparticle cohesive and adhesive forces due to electric charges frequently dominate over the hydrodynamic and gravitational forces known to govern noncohesive sediment. These interparticle forces can trigger a process known as flocculation, which results in the formation of aggregates much larger than the individual grains. At the same time, turbulent stresses can act to break up these flocs generated by the cohesive forces, so that a delicate balance emerges between coalescence and break-up. Consequently, the dynamics of cohesive sediment in turbulent flows is significantly more complex than that of its noncohesive counterpart, with important implications for particle/floc size distributions and their effective settling rates. Cohesive forces furthermore strongly affect the erodibility of sediment deposits on the sea floor, which in turn influences fluvial and oceanic sediment transport processes. The proposed computational research project constitutes the first attempt to quantify the dynamics of cohesive sediment in turbulent  flows. It will address a broad range of fundamentally important questions:
+
+\begin{enumerate}
+\item how do the turbulence properties affect the equilibrium balance between sediment 
+flocculation/coalescence and break-up?
+\item how does the floc size distribution vary as a function of the turbulence and sediment properties?
+\item how does the effective settling velocity of the cohesive sediment depend on the turbulence and sediment properties?
+\item how are the turbulence properties altered by the sediment?
+\item how is the effect of cohesive sediment on turbulence different from that of noncohesive sediment?
+\item how is the erodibility of a sediment bed affected by cohesive forces?
+\end{enumerate}
+
+
+
+
+\subsection*{Project 2:  Gravity currents over erodible beds}
+Gravity currents play a decisive role in transporting mass, momentum, and energy in our environment \citep{simpson1997gravity}. Specifically, turbidity currents are believed to be the most critical mechanism for sediment transport to the ocean floor \citep{kneller2016long}. This project will extend the extensive PI's work on gravity currents\citep{meiburg2010, konopliv2016modelling} in the lock exchange configurations to erodible beds with resolved grains. In contrast to recent grain resolved simulations in pressure-driven channel flow with erodible beds \citep{vowinckel2016b,kidanemariam2017formation}, our simulations will address the peculiarity of gravity currents as an inherent unsteady process to transport sediment in collaboration  with experimentalists \citep{zordan2018}. Recent numerical attempts \citep{kyrousi2018} described the particle phase with an Eulerian approach that requires substantial modeling of the complex rheology of dense suspension, which we avoid at the expense of increase numerical costs to simulate individual particles. This project is supported by a grant for a research fellowship by the Deutsche Forschungsgemeinschaft (Germany) KO5515/1-1.
+
+%Especially, the intriguing self-feeding mechanism
+ Our specific research objectives are
+\begin{enumerate}
+\item What are the key properties that control the entrainment of bed sediment into the gravity current?
+\item How do the gravity current dynamics change with particle entrainment?
+\item Are the current, simplified models of sediment transport able to recover the results of our numerical experiments?
+%\item What are the parameters that control the distance sediment is transported?
+\end{enumerate} 
+
+\subsection*{Project 3: Internal wave induced by downslope gravity current}
+Gravity currents in environmental settings often propagate down a shallow slope into a density stratified ambient fluid \citep{Sutherland2010,Baines2008, Snow2014, Biegert2017b}. The ability for internal waves to exist within stratified mediums results in complex interactions between gravity currents and internal waves \citep{Fischer1983, MacIntyre1999, MAXWORTHY2002, Meiburg2010, Cortes2014, Hogg2014, Hogg2017}. The proposed project extends on the recent PI's work on numerical simulations of a single-release gravity current down a slope, encountering a single internal wave propagating at the interface of a two-layer stratified ambient. A manuscript detailing the results of this work has been submitted to \emph{Journal of Fluid Mechanics} and is currently being reviewed.  In this project, our simulation will address the corollary problem of internal waves induced by the propagation of a gravity current through a two-layer stratification. Our specific research objectives are
+\begin{enumerate}
+\item What physical mechanism allows gravity currents to transfer energy into internal waves ?
+\item In which parameter range do gravity current form internal waves ?
+\item What does the efficiency of the energy transfer depend on ?
+\item What are the implications for transport in stratified environments ?
+\end{enumerate}  
+
+
+
+\section{Computational methodology}
+\subsection*{Application}
+All simulations  will be carried out with our in-house flow solver PARTIES.
+It solves the unsteady Navier-Stokes-Boussinesq equations for an incompressible Newtonian fluid
+\begin{equation} \label{eq:navier_stokes}
+\frac{\partial{\textbf{u}}}{\partial{t}}+\nabla\cdot(\textbf{u}\textbf{u}) = \frac{1}{\rho_f}\:\nabla p + \nu_f \nabla^2 \textbf{u} + \textbf{f}_f + \textbf{f}_{IBM},
+\end{equation} 
+and the continuity equation
+% 
+\begin{equation}\label{eq:continuity}
+\nabla\cdot\textbf{u}=0 ,
+\end{equation}
+with $\textbf{u}=(u,v,w)^{T}$ designating the velocity vector in Cartesian coordinates, $\rho_f$ the fluid density, $p$ the pressure, $\nu_f$ the kinematic viscosity, $\textbf{f}_f$ a volume force accounting for buoyancy, $\textbf{f}_{IBM}$ an artificial volume force introduced by the IBM and $t$ the time. Additionally, a concentration field  $c$ is advanced over time, which obeys   \\
+ 
+ \begin{equation}
+\partial_t  c + \hat {\mathbf u} \cdot \nabla \mathbf c=   \nabla \cdot  D \nabla \mathbf c. \label{eq:scalar}
+\end{equation}
+Here,  $D(\mathbf x, t)$ is  the diffusivity of both phases, and $\hat {\mathbf u}(\mathbf x, t)$  is the compound  velocity of the particle and fluid phase. Both are  defined in the whole domain as follows
+\begin{eqnarray}
+D &=& \xi_f D_f +(1-\xi_f)D_s  \\
+\hat{ \mathbf u}  &=& \xi_f \mathbf u  + (1 - \xi_f ) \mathbf v
+\end{eqnarray}
+Here $\mathbf v$ denotes the local velocity of the particle phase that we reconstruct from the linear velocity $\mathbf u_p$ and the angular velocity $\bs \omega_p$ of particle $p$.
+The fluid indicator function $\xi_f$ is zero inside the spherical particles  and unity outside.  Note that PARTIES can handle an arbitrary number of additional scalar fields. 
+
+Governing equations \eqref{eq:navier_stokes}-\eqref{eq:scalar} hold on the  computational domain $\Omega$, which is a cuboid with edge length $L_x,L_y,L_z$. This domain is  divided in $N_x, N_y, N_z$  cells  for each direction making up a Cartesian grid with variables arranged with the Marker and cell method\citep{ferziger2012computational}. Each field ($\mathbf u,p,c$) is thus discretized at $N_{tot}=N_x\times N_y\times N_z$ grid points by a double precision floating point number. At the boundary of $\Omega$, we are able to specify a variety of conditions (e.g. periodic, no-slip, impermeable, etc. ) depending on the particular problem.
+
+Furthermore, we consider $N_p$ spherical particles $\mathbb S_p$ with center of mass $\mathbf X_p$ immersed into the computational domain. The motion of each individual spherical particle is calculated by solving an ordinary differential equation for its
+translational velocity $\textbf{u}_p=(u_p,v_p,w_p)^{T}$
+%     
+       \begin{equation}\label{eq:part_lin}
+       %
+        m_p\: \frac{\text{d}\textbf{u}_p}{\text{d} t} = \oint_{\Gamma_p} \boldsymbol{\tau} \cdot \textbf{n}\: \text{d}s + 
+       V_p\:( \rho_s-\rho_f )\: \textbf{g} + \textbf{F}_{c,n} + \textbf{F}_{c,t} \qquad .
+       %
+       \end{equation}     
+        %
+        and for its angular velocity $\boldsymbol{\omega}_p=(\omega_{p,x},\omega_{p,y},\omega_{p,z})^{T}$,
+        %        
+       \begin{equation}\label{eq:part_ang}
+       % 
+       I_p \:\frac{ \text{d}\boldsymbol{\omega}_p}{\text{d} t} = \oint_{\Gamma_p} \textbf{r}\times(\boldsymbol{\tau}\cdot\textbf{n})\:\text{d}s + \textbf{T}_c \hspace{0.5cm}.
+      %
+      \end{equation} 
+      %              
+Here, $V_p$ is the particle volume, $\textbf{g}$ the gravitational acceleration, $\boldsymbol{\tau}$ is the stress tensor, $\rho_s$ the particle density,
+$I_p=8\pi\rho_s R_p^{5}/15$ the moment of inertia, and $R_p$ the particle radius. 
+The vector $\textbf{n}$ is the outward-pointing normal on the
+interface $\partial \mathbb S_p$, the term $\textbf{F}_c$ denotes the forces resulting from particle-particle
+interaction. The torque generated by collision, hence, is $\textbf{T}_c= R_p \left( \textbf{n}_p \times \textbf{F}_{c,t} \right)$.
+The fluid phase [Eqs.~\eqref{eq:navier_stokes}-\eqref{eq:scalar}] and the immersed particles [Eqs.~\eqref{eq:part_lin}-\eqref{eq:part_ang}] are coupled through the source term $\textbf{f}_{IBM}$ enforcing the no-slip  condition at the particle surfaces
+\begin{equation}
+\mathbf u(\mathbf x,t) =  \mathbf u_p + \omega_p \times  ( \mathbf x-\mathbf X_p)\  \,\text{ for } \mathbf x\in \partial \mathbb S_p.
+\end{equation}
+The surface of the particles is represented by discrete Lagrangian markers that communicate with the Eulerian fields ($\mathbf u,p,c$) by interpolation and spreading operations. For the present proposal only spherical particles, each with an arbitrary radius, are used. We published \citep{biegert2016} this method that involves a novel collision scheme, together with  successful validations against several test cases for binary particle-wall collisions and the collective motion of particles in a horizontal channel flow.
+
+The solution of the scalar field governing equation requires the treatment of a  spatially varying diffusivity and the construction of a continuous velocity across the particle and the fluid phase. We do this by Volume of Fluid approach similar to \citep{ardekani2018heat} but with an additional features to handle the squirmer model \citep{chisholm2016},   which we validated and currently  working  on its description in a publication\cite{ouillon2019framework}
+
+
+
+\subsection*{Numerical methods and efficiencies} 
+The computational performance of PARTIES is detailed in the separate document \emph{Code Performance} to which the reader is referred for further details.
+The discretization of spatial derivatives  is performed with a central finite-difference method. The time advancement is done by a fractional-step method for the pressure using an explicit low-storage three-step Runge-Kutta scheme for the convective terms and a semi-implicit Crank-Nicholson scheme for the viscous terms \citep{kempe2012}. To advance the discretized fields from time  $t^n$ to $t^{n+1}= t^{n}+\Delta t^n$ three Runge-Kutta substeps are performed that essentially perform the same key procedures. Those  procedures are the solution of a Poisson equation for the quasi pressure, the solution of a Helmholtz equation for each velocity component and the scalar field via a Conjugate Gradient (CG) method, several interpolation steps between Lagrangian and Eulerian points, and evaluating explicit terms of the time-stepping scheme. Besides the MPI library, PARTIES  employs two third party libraries. The FFTW library is used as a part of the  Fast-Poisson solver  to calculate the quasi pressure and the parallel Hierarchical Data Format (HDF) library is used for data input/output. The HDF5 data model and software libraries are used to write data collectively and from distributed memory. The code is fully parallelized by the Message Passing Interface (MPI) routines utilizing the spatial decomposition of $\Omega$, i.e., assigning to each MPI process a subdomain of $\Omega$ and the particles within.  
+
+
+ Outputted data is in double-precision floating-point format and is written at certain output steps for  flow fields, i.e. the pressure $p$ and the fluid velocity $(u,v,w)$ as well as particle data. Data storage requirements are dominated by the fluid flow variables (we thus neglect the particle data for the storage requirement) and each output of the fluid flow data requires $N_{var}\times N_{tot}\times 8$ bytes. A minimum of $N_{var}=4$ is needed but it might increase when additional scalar fields are solved for or particle volume fractions are saved. Thus for each simulation, we require a storage  of
+\begin{equation}
+ D=N_{save}\times N_{var}\times N_{tot}\times  8 
+\end{equation}
+in bytes, where $N_{save}$ is the number of outputs that are necessary to accurately describe the processes of interest in time, which is determined by the user depending on the scientific goal of the simulation. The service units on Stampede2 are calculated with the help of the scaling test, where we determine the wall-clock time $\hat K$ needed to advance the simulation by one time step per gridpoint on one `virtual` node. Thus the node hours $S$  (i.e. the service units SUs) can be calculated by multiplying  number of gridpoints and time steps with $\hat K$
+\begin{equation}
+S = N_{tot}N_{step} \hat K. \label{eq:SU}
+\end{equation}
+
+ In principle $\hat K$, which we call \emph{timing coefficient},  depends on the problem size $N_{tot}$ as well as the number of nodes $\hat P$. As described in the {Code Performance}, we will work with  $\hat K = 2.5 \times 10^{-7}$ (in node seconds) when no preliminary simulation of the specific problem is available. This parameter was obtained for approximately 16 million grid points per node, which showed an optimal parallel efficiency on the SKX nodes.
+ 
+ 
+The number of time steps $N_{step}$ can be calculated from the fact that time-stepping scheme is conditionally stable with respect to the Courant-Friedrich-Levy (CFL) conditions that forces the maximum time step $\Delta t$ being such that any information is advected less  than the width $\Delta x$ of a cell, i.e. schematically , $\Delta t< \rm{CFL}\, \Delta x/ U_{max}$. To determine the time step we set $\rm{CFL}=0.5$, so that the time step can be explicitly calculated when the maximum velocity $U_{max}$ is known
+\begin{equation}
+\Delta t= \Delta x \, \rm{CFL}/  U_{max},  \label{eq:cfl:cond}
+\end{equation}
+which yields the number of time steps given the simulation time $\tau_s$
+\beq
+N_{step} = \frac{\tau_s U_{max}}{\Delta x \rm{CFL}} \label{eq:steps}
+\eeq
+
+%Perfect parallel efficiency is obtained for as few as $N_{tot}/P = 256^3/128$ grid cells per core and weak scaling reveals satisfying efficiency up to $P = 2048$ cores. Parallel efficiency drops when using all 68 cores of a single KNL node and we therefore set the number of MPI tasks to 64 per node. The total number of cores used for the simulations will therefore be limited to $P=2048$ cores, always within the range of super-linear or linear speedup revealed by the strong scaling analysis.
+
+ %Data storage requirements are dominated by the fluid flow variables and each output of the fluid flow data requires $4\cdot 8\cdot N_x\cdot N_y\cdot N_z$ bytes, where $N_i$ is the total number of grid cells in the $i^{th}$ direction. An additional $8\cdot N_x\cdot N_y\cdot N_z$ bytes are required when the volume fraction of fluid is outputted, i.e. when immersed particles are present.
+
+\section{Computational research plan}\label{sec:project_details}
+\subsection*{Project 1: Cohesive Sediment Dynamics in Turbulent Flow}
+\label{sec:cohesion}
+Firstly, one-way coupled, lagrangian point particle simulations of cohesive sediment in a
+cellular flowfield comprising Taylor-Green vortices  of size $L$ and velocity $U_o$ are performed. The goal is to study the competing influences of particle inertia, which on one hand will promote the preferential accumulation of particles in regions of downward fluid motion, thus accelerating their effective settling motion, but which on the other hand will transport particles into regions of high strain, thereby promoting their break-up and reducing their settling rate.The fluid is characterized by its viscosity $\mu$ and density $\rho_f$, the particles by their diameter $\Gamma _D  = D/L$ and density $\rho = \rho _p / \rho _f$ and finally the gravity force by the gravitational acceleration g.The non-dimensional parameters of this problem are the Cohesive Number(Co), Stokes Number(St) and the Velocity Ratio(W) (which is the ratio of Stokes settling velocity and the characteristic velocity $U_o$).
+\beq
+Co = \frac{max(||\mathbf{F}_{cohesive}||)}{\rho _f U_o^2 L^2} ,\\
+St= \frac{1}{18}\frac{ \rho_p D^2 U_o}{ \rho_f \nu_f L} ,\\
+W = \frac{V_s}{U_o} = \frac{1}{18} (\rho  - 1) \frac{D^2 g}{\nu_f U_o} 
+\eeq
+  We will run simulations with O($10^3$) particles each, for different initial value combinations of the Stokes number $St_o$, the settling parameter $W_o$ and the cohesion parameter $Co_o$. We will then record the long-time statistical equilibrium values of St, W and the effective settling rate, and analyze these as functions of the equilibrium value of the cohesion parameter Co. These computationally cheap simulations will help us to narrow down the parameter space where the dynamics are very interesting. 
+  
+  Followingly we will explore this parameter space  with four way coupled fully resolved simulations as the only accurate way to simulate the motion of particles, whose diameter is greater than the Kolmogorov length scale in a turbulent flow is to numerically resolve the fluid motion around each individual moving particle. We will set up a homogeneous, isotropic turbulent flow, for example via the forcing procedure described in eswaranPope1988, cf. also Bosse et al., 2006. After the flow has reached statistical equilibrium, we will seed it with cohesive sediment grains and then track the dynamics of these grains as they flocculate and break up in the turbulent flow. Both neutrally and negatively buoyant particles will be considered. These simulations will provide information on such quantities as equilibrium floc size distributions, effective settling rates and turbulence modulation as functions of the governing dimensionless parameters, including particle volume fraction, cohesive force strength and the ratio of particle size to Kolmogorov length scale.
+
+
+\subsection*{Project 2: Gravity currents over erodible beds} 
+\label{sec:erosion}
+
+Figure \ref{fig:bed:erosion} sketches the model flume with a typical full-lock exchange configuration for the bed-erosion simulations. The third z-dimension is not drawn since the setup is  periodic in this direction. In what follows, we describe  lengths  relative to the flume height $L_y$. 
+ On the left,  heavy fluid of density $\rho_1$ is located in a lock of length $x_0=L_y$. This local density change is mediated by the concentration field $c(\mathbf x,t)$ that will start to move for $t>0$. This concentration represent an excess salinity, which is typically used in laboratory experiments \citep{zordan2018}, such that the diffusivity  inside particle is zero $D_s=0$, i.e. no salt diffuses across the solid bodies.  With the beginning of the simulation the dense fluid will spread with a front velocity of $v_F \approx 0.5 \mathcal U$. Here, $\mathcal U$ is the buoyancy velocity $\mathcal U = \sqrt{L_y(\rho_1-\rho_f)/\rho_f }$.
+ The bed of particles is built of polydisperse particles with a small variance around the median diameter $D_p$, which are randomly placed and  then  settle without interaction with the fluid phase (i.e. in a vacuum). However, similarly to the experimental work \citep{zordan2018},  particles (dark gray circles in Fig.\ref{fig:bed:erosion})  close to the lock will be fixed to avoid the special conditions of the  of gravity current acceleration, also after the mobile particles (white filled circles), we fix particles to determine how they sediment out \ro{Rephrase this sentence, not super clear ?}. The actual size of the flume is constrained by the numerical costs, which we fixed in Sec.~\ref{sec:schedule_erosion}  and explain next. Our simulations from the current allocation period suggest that a bed  height of around 7 particle layers is adequate. 
+ 
+Beside the dimensions of the flume and the particle collision model that we tuned for  typical sediments, the problem is described by five non-dimensional parameters ($Re_L = \mathcal U L_y/ \nu, Sc = \nu/ D_f, G = g L_y/ \mathcal U^2, \rho_s'=\rho_s / \rho_f, \delta = D_p/L_y$) that arise when the governing equation are non-dimensionalized by the introduced scales. Since we are not able to simulate the large length scale ratios and Reynolds numbers that appear in the environment, but want  to observe as much as features from a realistic gravity current, we aim for three objectives that are in conflict with each other: (i) In the environment gravity currents are turbulent flows so that we need a sufficiently high Reynolds number, at least $Re_L > 5000$.  (2)   We need to match the ratio of settling velocity $ V_s$ relative to the buoyant velocity $\mathcal U$ \citep{imran2017froude} ). Using the  Stokes formula this ratio gets
+\beq
+V_s/ \mathcal U= -\dfrac{\delta^2 G Re( \rho_s'-1)}{18}
+\eeq
+
+\beq
+V_{sd}/ \mathcal U= -\dfrac{\delta^2 G Re[-1/G + ( 1- \rho_s' )]}{18}
+\eeq
+
+and inside the undiluted current body $c=1$.
+
+However the range of settling velocities may vary a lot in the environment, e.g. for a large turbidity current a front velocity of  1m/s is a characteristic number while settling might differ a lot with the sediment size (from coarse to very fine sand we might find $ V_s=$ 2mm/s ... 20cm/s, which results in ratios of $ V_s/ \mathcal U= 0.2 ... 2 \times 10 ^ {-3}$). %So we aim for  a value in the middle $|V_s| = 0.01$. (3)
+ (3) Resolution requirements grow considerably by reducing the particle size. Indeed, considering that each particle is resolved  by $\sigma$ number of gridpoints the total number of gridpoints is
+ \beq
+ N_{tot} =  L_xL_yL_z \times \left( \frac{\sigma}{d_p} \right)^3 \label{eq:gridpoints:erosion}
+ \eeq 
+  
+ The main conflict between objectives is the salinity induced buoyancy that leads to  difference in normalized settling velocity of 
+\beq
+\frac{\Delta^2 Re_L}{18}, \label{eq:settdiff}
+\eeq
+Which needs to be small enough to reach into the targeted settling velocity, especially to avoid a rising particles due to positive buoyancy. We found that $\delta = 0.01$ to be feasible value. 
+
+ 
+ 
+\subsection*{Project 3: Internal wave induced by downslope gravity current}\label{sec:internal_wave}
+Figure \ref{fig:setup_iw} sketches the model flume with a lock-exchange configuration, where the gate separating the gravity current fluid and the ambient fluid has height $h_0$ and is located on a slope. The ambient fluid is stably stratified with two distinct layers of top and bottom density $\rho_0$ and $\rho_2$ respectively. The initial density of the gravity current fluid $\rho_1$ and is such that $\rho_1\geq \rho_2\geq \rho_0$. The changes in density are due to salinity and assumed to evolve linearly with the local salt concentration. The third z-dimension is not drawn since the setup is homogeneous and periodic in this direction. The local salinity $c$ determines the density through the equation of state $\rho=\rho_0(1+\alpha c)$ where $\alpha$ is a constant expansion coefficient. Due to our interest in the energy budget of the system, including individual contributions of the gravity current salinity and ambient salinity to the potential energy, we split the salinity field into the distinct contributions of the salt initially present in the gravity-current fluid $c_c$ and in the lower ambient $c_a$, such that $c(\mbf x,t)=c_c(\mbf x,t)+c_a(\mbf x,t)$. At $t=0$, $c_c=C_1$ in the lock fluid and zero elsewhere, while $c_a=C_2$ in the lower ambient layer and zero elsewhere. We thus have that $\rho_1 = \rho_0(1+\alpha C_1)$ and $\rho_2 = \rho_0(1+\alpha C_2)$. The equations are made non-dimensional by introducing the reference length $h_0$, the buoyancy velocity  $u_b=\sqrt{\frac{\rho_1-\rho_0}{\rho_0}gh_0}$ and the reference salinity $C_1$. The key non-dimensional parameters that control the dynamics of the current, besides the flume geometry, are the Reynolds number $Re$, the Schmidt number $Sc$, the density ratio $\Gamma$ and the slope $m$, defined as
+\beq
+Re=\frac{u_bh_0}{\nu}, \ Sc = \frac{\nu}{\kappa_s},\ \Gamma=\frac{\rho_2-\rho_0}{\rho_1-\rho_0}=\frac{C_2}{C_1},\ m=\frac{h_s}{L_s}
+\eeq
+The geometry of the flume stems from the experimental setup \citep{Hogg2017} and our numerical simulations ({\it Interaction of a downslope gravity current with an internal wave}, submitted), but is adapted to allow for a longer distance from the slope to the right wall. This will allow for a longer propagation of the generated internal wave and thus a more accurate description of its properties. The applicability of our results to environmentally relevant scales depends on the ability of the simulations to replicate the strongly three-dimensional and turbulent nature of the gravity current. The lobe-and-cleft instability that is responsible for the destabilization of the head of the gravity current, and thus for the breakdown of large two-dimensional Kelvin-Helmholtz rollers can only exist in a sufficiently wide and high Reynolds number flow. The Reynolds number and width (z-direction) of the numerical domain thus constrain the computational cost. The Reynolds number is set to $Re=10000$ such that the flow is fully turbulent. The wavenumber associated to the fastest growing mode of the lobe-and-cleft instability can be estimated a priori \citep{Mechanics2012} and is found to be $k\approx 95$ for $Re=10000$. The associated wavelength is thus $\lambda=2\pi/60\approx 0.662$, i.e. one fifteenth of the lock height $h_0$. Given that periodic conditions are imposed in the spanwise direction, it is essential to allow for the instability to develop naturally, i.e. to set the width of the domain to multiple times the wavelength of the fastest growing mode. The width $W$ of the domain in the spanwise direction is set to $W=1$ such that $\approx 15$ lobe-and-cleft structures are able to form during the propagation of the current. The Schmidt number is considered to be an invariable parameter of the fluid and given the highly-turbulent nature of the flow, the simplifying assumption $Sc=1$ is made as it is not expected to impact the dynamic of the flow and energy budget. In particular, the flux of potential energy induced by molecular diffusion in such systems is often neglected. We thus focus our numerical investigation on the effect of the density ratio $\Gamma$ and slope $m$ on the internal wave induced by the gravity current. The flume size is set to $L_x\times L_y\times L_z = 25h_0\times 2.5h_0\times h_0$. As in section \ref{sec:erosion} the gravity current is expected to initially propagate at $v_F\approx 0.5u_b$ such that the non-dimensional time $\tau$ required for the current to reach the right wall of the flume is $\tau\approx 2\frac{L_x}{h_0}= 50$.  
+\setlength{\unitlength}{1cm}\begin{figure}[t]
+	\centering
+	\includegraphics[width=0.7\textwidth]{Figures/setup_iw.pdf}
+	\caption{\small \textit{Initial conditions for the simulation scenario addressing the formation and energy budget of internal waves induced by a downslope gravity current passing through a two-layer stratification interface.}}
+	\label{fig:setup_iw}
+\end{figure} 
+
+
+
+
+
+\section{Resources and storage allocation amounts}\label{sec:amounts}
+
+
+This section details the justification of allocation amounts for each project. The summary of the allocation amounts is:
+\begin{itemize}
+\item The total requirement for the completion of all three research projects is \textbf{xx SUs in node hours} to be used on \emph{Stampede2}, Phase 1.
+	\item The total storage requirement is \textbf{xx[TB] }on \emph{Ranch}.
+\end{itemize}
+Simulations are spread across work packages (WP). Each work package corresponds to a certain number of runs $N_{run}$. 
+
+
+% The requirement in SUs for individual runs is calculated as detailed in our code performance report by multiplying the planned number of gridpoints and time steps with  the timing coefficient  $\hat K= 2.5 \times 10^{-7}s$
+%\begin{equation}
+%S = N_{tot}N_{step} \hat K. \label{eq:SU}
+%\end{equation}
+%In most cases the number of timesteps can be estimated by the simulation time $\tau_s$, the grid size $\Delta x$, a maximum velocity $U_{max}$, and the CFL number (let's take 0.5) by
+%\beq
+%N_{step} =\frac{ \tau_s U_{max} }{\Delta x \,CFL }
+%\eeq
+
+
+
+
+\subsection*{Project 1: Cohesive Sediment Dynamics in Turbulent Flow}}
+\label{sec:schedule_cohesive}
+
+This problem has three non dimensional parameters as mentioned in the previous section namely St,Co and V. For each parameter we will run a simulation for 4 values which makes the total number of simulations to be 12. This parameter space is going to be explored in a domain $L_x \times L_y \times L_z = 0.32 \times 0.32 \times 0.32$ with 626 particles with volume fraction of 0.01. Each particle is resolved by 16 grid points ( $\Delta x= 0.625 \times 10^{(-3)}  $ with a CFL criterion of 0.5 makes $\Delta t =0.0001559$)making the total number of grid points to be $512 \times 512 \times 512$. 
+
+Once we figure out the parameters which is of greater interest to us, we run 4 larger simulations. This parameter space is going to be explored in a domain $L_x \times L_y \times L_z = 0.64 \times 0.64 \times 0.64$ with 5007 particles with volume fraction of 0.01. Each particle is resolved by 16 grid points ( $\Delta x= 0.625 \times 10^{(-3)}  $ with a CFL criterion of 0.5 makes $\Delta t =0.0001559$)making the total number of grid points to be $1024 \times 1024 \times 1024$. 
+
+From the computationally cheap one-way coupled, lagrangian point particle simulations, we obtain that the total simulation time that we need to obtain a saturation of the flocs is $\tau =80$.
+\beq
+S = L_x L_y L_z \times \left( \frac{\sigma}{d_p} \right)^3 \frac{\hat K \tau}{\Delta t }
+\eeq
+
+
+\begin{table}[H]
+ \centering
+\begin{tabular}{c | c | c | c | r | r }
+\hline 
+\hline 
+WP & $N_{run}$    & $ L_x \times  L_y \times   L_z$ &  $N_{tot}$  				& $S_{run}$ (SUs)  & $D_{run}$ (TB)  \\
+\hline
+1  & 12         & $0.32\times  0.32\times 0.32$    &  $256^{3}$  & 4\,783  & 0.3125\\
+\hline
+2  &  4         &  $0.64\times  0.64\times  0.64$    &   $1024^{3}$    &   38\,264 & 2.5  \\
+\hline
+Sum   &\multicolumn{3}{r|} {$S=210\,452$ node hours } &\multicolumn{2}{r}{ D = $13.75$ TB} \\
+\hline 
+\end{tabular}
+ \caption{\small \textit{Estimated resources on {\em Stampede2} for the sub-project on Cohesive Sediment Dynamics in Turbulent Flow.  }}
+\label{tab:bed:demand}
+\end{table} 
+
+
+
+\subsection*{Project 2: Bed erosion by gravity currents: }
+\label{sec:schedule_erosion}.
+
+By carefully assessing the different parameters, we determined a flume geometry that is listed in Tab.~\ref{tab:bed:demand}, which distinguishes two work packages that  are distinguished in the $z$ dimension: WP1 represents a slab geometry for which the periodic z-direction is only three times the particle median $D_p$ altering the flow practically two-dimensional. 
+WP2 represents a fully three-dimensional flume for which the $z$  the dimension will  extend over  half the flume height $L_z= 0.5 L_y$ to allow for the lobe and cleft instability to develop, but which is computationally much more expensive. With our consideration the computational time is estimated by introducing \eqref{eq:gridpoints:erosion}, \eqref{eq:steps}, together with the estimation of the front velocity for the maximum velocity and that the current propagates though the whole flume with this velocity in \eqref{eq:SU}, which yields
+\beq
+S = L_x^2 L_y L_z \times \left( \frac{\sigma}{d_p} \right)^4 \frac{\hat K}{\rm{CFL}}
+\eeq
+
+\ro{Thomas, should $d_p$ be replace with $\delta$ ? Also, it is not immediately clear why $L_x$ appears with a $^2$ and the reviewers might ask for more intermediate steps. I specified that $\hat K$ was in seconds in the text, but we might want to specify here that we understand that SUs = Nh and not Ns}
+%The streamwise size of the flume is another parameter to choose: we do a lock length of $x_0=1$, a flume length of $L_x=8$, where we fix the particles for  $x=0 \ldots 3$, treat them as mobile for $x=3\ldots 5$, and then fix them again until the end of the flume.
+
+
+ 
+
+
+
+
+\begin{table}[H]
+ \centering
+\begin{tabular}{c | c | c | c | r | r }
+\hline 
+\hline 
+WP & $N_{run}$    & $ L_x \times  L_y \times   L_z$ &  $N_{tot}$  				& $S_{run}$ (SUs)  & $D_{run}$ (TB)  \\
+\hline
+1  & 20         & $8L_y\times  L_y \times 10 ^{-3} L_y$    &  $810 \time 10^{6}$  & 1\,350  & 0.8\\
+\hline
+2  &  4         &  $8L_y\times  L_y \times  0.5 L_y$    &   $13.5 \time 10^{9}$    &   22\,500 & 13    \\
+\hline
+Sum   &\multicolumn{3}{r|} {$S=117\,000$ node hours } &\multicolumn{2}{r}{ D = $68$ TB} \\
+\hline 
+\end{tabular}
+ \caption{\small \textit{Estimated resources on {\em Stampede2} for the sub-project on bed erosion by gravity currents. The remaining parameters are $Re_L= 5425,  Sc = 7, G = 333.33, \rho_s'=1.007, \delta = 0.01, \sigma= 15, N_{var}=6, N_{save} = 20$ }}
+\label{tab:bed:demand}
+\end{table} 
+
+\subsection*{Project 3: Internal wave induced by downslope gravity current}\label{sec:schedule_internal_wave}
+In section \ref{sec:internal_wave} we restricted the parametric space to the density ratio $\Gamma$ and the slope $m$ in order to investigate the dynamic and energy budget of the generated internal wave. $\Gamma=0$ and $\Gamma=1$ are natural limit conditions to the parametric study as the former defines the absence of stratification in the ambient fluid and the latter defines the situation of neutral buoyancy between the current and the lower ambient fluid. However, the current accumulates kinetic energy by release of potential energy and can thus strongly perturb the lower layer even in the case where $\Gamma>1$. We thus consider the parametric range $\Gamma=0.0,0.4,0.8,1.0,1.2$. The slope $m=h_s/L_s$ is set alternatively to $0.1,0.125,0.2,0.3,0.5$. Anticipating a non-linear effect of both parameters and their combinations, we define a single work package WP in which simulation $WP_{i,j}$ denotes the simulation at $\Gamma_i$ and $m_j$. This results in a total of $N_{sim}=5\times 5 =25$.
+
+A two-dimensional test simulation was run on \emph{Stampede2} and revealed that satisfactory mesh-size convergence was obtained for $\Delta x =0.0035$. Thus combining equations \ref{eq:SU}, \ref{eq:steps} and noting that $\tau U_{max}\approx L_x$ we find the required SUs (in Nh) per simulation to be
+\beq
+S = \frac{L_x^2 L_y L_z}{{\Delta x}^4}\frac{\hat K}{\rm{CFL}}\approx 1.45\times 10^3 SUs.
+\eeq
+The number of variables required by this simulation to be stored is $N_{var}=6$ ($\mbf u=(u,v,w)$, $p$, $c_c$, $c_a$). Data analysis is done in runtime within PARTIES in the form of 2D averages and 0D metrics, such that writing of three-dimensional data is only necessary for visualization purposes and resuming of simulations. High frame rate videos of the three-dimensional flow will be rendered using \emph{Blender} and its \emph{Cycles} rendering engine, coupled with an automated rendering procedure developed by the PI's group. Due to the computational cost of such rendering procedures on our local workstations, we limit the number of simulations with high frequency output to four reference simulations ($\Gamma=1.0$ with $m=0.2,0.5$ and $\Gamma = 0.4,1.2$ with $m=0.2$). We require low output (lo) simulations to have $N_{save}=25$, and high output (ho) simulations to have $N_{save}=250$ i.e. one save every 0.2 time units (we recall that the gravity current propagates at a non-dimensional speed of $\approx 0.5$ such that it advances by $0.1$ of its height at every save). This yields
+$D_{lo} = N_{save,lo}\times N_{var}\times N_{tot}\times 8 = 1.591TB$ and $D_{ho} = N_{save,ho}\times N_{var}\times N_{tot}\times 8 = 15.91TB$.
+The total requirements for this project are given in table \ref{tab:internal_wave_demand}.
+
+\begin{table}[H]
+ \centering
+\begin{tabular}{c | c | c | c | r | r }
+\hline 
+\hline 
+WP & $N_{run}$    & $ L_x \times  L_y \times   L_z$ &  $N_{tot}$  				& $S_{run}$ (SUs)  & $D_{run}$ (TB)  \\
+\hline
+1.lo  & 21         & $25h_0\times 2.5h_0\times h_0$    &  $1.46 \times 10^{9}$  & 1\,450  & 1.591\\
+\hline
+1.ho  & 4         & $25h_0\times 2.5h_0\times h_0$    &  $1.46 \times 10^{9}$  & 1\,450  & 15.91\\
+\hline
+Sum   &\multicolumn{3}{r|} {$S=36\,000$ node hours } &\multicolumn{2}{r}{ D = $97.1$ TB} \\
+\hline 
+\end{tabular}
+ \caption{\small \textit{Estimated resources on {\em Stampede2} for the sub-project on internal wave generation by downslope gravity current. Parameters are $Re= 10000$,  $Sc=1$, $\Gamma_i=0.0,0.4,0.8,1.0,1.2$, $m_j=0.1,0.125,0.2,0.3,0.5$, $N_{var}=6$, $N_{save} = 25,250$ }}
+\label{tab:internal_wave_demand}
+\end{table} 
+
+\section{Local resources and personnel}
+\subsection*{Computing resources}
+Within the PI’s research group, we use a network of high-end Linux based computers and have access to the Knot Cluster at UCSB, which comprises
+\begin{itemize}
+ \item 84 SL390 nodes of dual Intel X5650 six core processors (48GB and Infiniband Interconnect). 
+ \item Three  DL580 nodes with 4 Intel X7550 eight core processors and 1TB of RAM. 
+ \item One DL580 nodes with 4 Intel X7550 eight core processors and 512GB of RAM.
+ \item 12 NVIDIA M2050 GPUs in SL390 nodes with X5650 six core processors. 
+ \item 9 Intel Xeon Phi coprocessors 
+\end{itemize}
+These facilities will be adequate for program development, single
+processor performance tests, small-scale parallel simulations and post-processing, such as the generation of animations and visualizations. It is however extremely limited for the large-scale simulations that are necessary for the advancement of our research objectives.
+% \newpage
+\subsection*{Key Personnel}
+\label{sec:personnel}
+\paragraph{Principal investigator: } 
+\begin{itemize}
+\item Prof. Eckart Meiburg
+\end{itemize} 
+\paragraph{Postdoctoral reasearchers: }
+\begin{itemize}
+%\item Dr. Bernhard Vowinckel
+\item Dr. Thomas K{\"o}llner
+\end{itemize}
+
+\paragraph{PhD students and researchers: }
+\begin{itemize}
+\item Raphael Ouillon
+%\item Edward Biegert
+%\item Nathan Konopliv
+\item Rochishnu Chowdhury
+\end{itemize}
+
+
+% \bgroup
+% \footnotesize
+% \sffamily
+% 
+\begin{comment}
+
+\begin{table}[h]
+
+\normalsize
+\begin{tabular}{l p{15cm}}
+
+%
+PI:         & Prof. Eckart Meiburg\\
+Education:    & Dipl.-Ing., Mechanical Engineering, University of Karlsruhe, Germany      \\
+              & Dr.-Ing., University of Karlsruhe, Germany \\ 
+              & Professor, Department of Mechanical Engineering, UC Santa Barbara  \\ 
+              & Experience with Supercomputing for more than 30 years      \\ [0.5cm]
+              
+%Member:         & Bernhard Vowinckel \\ 
+%Education:    & Dipl.-Hydrol., Hydrology, TU Dresden, Germany \\
+ %             & Dr.-Ing., Mechanical Engineering, TU Dresden, Germany\\
+%              & PostDoc., Department of Mechanical Engineering, UC Santa Barbara\\[0.5cm]
+              Member:         & Thomas K{\"o}llner\\
+Education:    & MS., Mechanical Engineering, TU Ilmenau, Germany\\
+              & Dr.-Ing, Mechanical Engineering, TU Ilmenau, Germany\\
+		& PostDoc., Department of Mechanical Engineering, UC Santa Barbara\\
+[0.5cm]
+Member:         & Raphael Ouillon\\
+Education:    & BS, Mechanical Engineering, EPFL, Switzerland\\
+              & MA, Mechanical Engineering, EPFL, Switzerland\\
+              & PhD student, Mechanical Engineering, UC Santa Barbara\\                       [0.5cm]
+              
+%Member:         & Edward Biegert\\
+%Education:    & BS, Mechanical Engineering, Rice University\\
+  %            & PhD student, Mechanical Engineering, UC Santa Barbara\\ [0.5cm]
+              
+%Member:         & Nathan Konopliv\\
+%Education:    & BS, Mechanical Engineering, UC San Diego\\
+ %             & PhD student, Mechanical Engineering, UC Santa Barbara\\             
+%[0.5cm]
+              
+              
+Member:         & Rochishnu Chowdhury\\
+Education:    & BS, Mechanical Engineering, Jadavpur University\\
+              & PhD student, Mechanical Engineering, UC Santa Barbara\\
+              
+%               \
+\end{tabular}
+\end{table}
+\end{comment}
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+\clearpage
+\newpage
+\AtBeginShipout{%
+\AtBeginShipoutDiscard
+}
+\bibliographystyle{abbrv}
+\bibliography{bibliography}
+
+\end{document}
